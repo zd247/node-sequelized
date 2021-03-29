@@ -23,6 +23,27 @@ module.exports = {
 
 run .sequalizerc with `sequelize init`
 
+install helper packages from node
+
+`npm install @babel/cli @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/register @babel/runtime @babel/node --include=dev`
+
+create a nodemon.json at the root folder, type this in:
+
+```
+{
+    "watch": [
+        "package.json",
+        "nodemon.json",
+        ".eslintrc.json",
+        ".babelrc",
+        ".prettierrc",
+        "src/"
+    ],
+    "verbose": true,
+    "ignore": ["*.test.js", "*.spec.js"]
+}
+```
+
 #### migration commands
 
 `sequelize model:create --name Classroom --attributes class_name:string`
@@ -35,4 +56,5 @@ Remember the many to many associations table (in this case StudentCourse) must b
 
 Type this command to generate the table to the database `sequelize db:migrate` after alteration of the database.
 
-index.js files in each directory acts as exporters# node-sequelized
+
+

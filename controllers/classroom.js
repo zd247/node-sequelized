@@ -1,6 +1,7 @@
 const Classroom = require('../models').Classroom
 const Student = require('../models').Student
 
+// classroom accept students "to-be added request"
 
 module.exports = {
     list(req,res){
@@ -32,7 +33,9 @@ module.exports = {
     },
 
     create(req, res) {
-        return Classroom.create(req.body)
+        return Classroom.create(req.body, {
+            include: [{model: Student, as: 'students'}]
+        })
         .then((classroom) => res.status(201).send(classroom))
         .catch((error) => res.status(400).send(error))
     },
